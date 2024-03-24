@@ -1,14 +1,23 @@
-require("dotenv/config")
+require("dotenv/config");
 const express = require("express");
 const app = express();
-const port = 3300;
+const port = 3100;
 const mongoose = require("mongoose")
 const connect = require('./config/db')
+const userRouter = require('./routes/userRoute')
 
 
+// middlewares 
+app.use(express.json());
+
+
+// API's
+app.use('/api/v1', userRouter)
+
+//   Server connecting DB
 
 app.get('/',(req, res)=>{
-    res.send('hello word')
+    res.send('Hello Word')
 })
 
 // server connection and DB 
@@ -28,6 +37,10 @@ connect()
 
 
 
-app.get('/',(req, res)=>{
-    res.send('hello world')
+app.get("/", function (req, res) {
+    res.send("Hello World")
+});
+
+app.use((req, res)=>{
+    res.status(404).send("route not found")
 })
