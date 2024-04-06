@@ -5,6 +5,7 @@ const port = 3100;
 const mongoose = require("mongoose")
 const connect = require('./config/db')
 const userRouter = require('./routes/userRoute')
+const taskRouter = require('./routes/taskRoute')
 
 
 // middlewares 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // API's
 app.use('/api/v1', userRouter)
+app.use("/api/v1", taskRouter);
 
 //   Server connecting DB
 
