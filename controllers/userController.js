@@ -15,10 +15,10 @@ const registration = async(req,res)=>{
       const registeration = await userModel.create({...req.body})
       res.status(201).json({success:true,message:'registered successfully', registeration});
     } catch (error) {
-        if(error.code === 11000){
-            res.status(400).json({sucess:false,message: "Email address already in use"});
-            return
-        }
+        // if(error.code === 11000){
+        //     res.status(400).json({sucess:false,message: "Email address already in use"});
+        //     return
+        // }
       res.status(500).json({error})
       console.log(error.message);
   
